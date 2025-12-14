@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# 📝 TODO List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React Hooks と TypeScript を使って作成した TODO リストアプリです。  
+状態管理・型設計・UI構築を一通り体験することを目的に開発しました。
 
-Currently, two official plugins are available:
+Vite（ヴィート）を利用して高速な開発環境を構築しています。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📌 主な特徴
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React Hooks を使用した関数コンポーネント構成
+- TypeScript による厳密な型付け（`any` 不使用）
+- TODO の追加・削除・編集・絞り込みに対応
+- Tailwind CSS によるシンプルで見やすい UI
+- Context API を使った状態管理
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠 使用技術
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React**
+- **TypeScript**
+- **Vite**
+- **Tailwind CSS**
+- **Context API**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🗂 TODO データ構造
+
+各 TODO には以下の情報を持たせています。
+
+- ID（UUID）
+- タイトル
+- ステータス  
+  - 未着手  
+  - 進行中  
+  - 完了
+- 詳細内容
+- 期限
+- 作成日
+- 更新日
+
+---
+
+##  実装済み機能
+
+### 基本機能
+- TODO の追加
+- TODO の削除
+- TODO の編集
+- TODO 一覧表示
+
+### 絞り込み機能
+- ID で絞り込み
+- ステータスで絞り込み
+- 期限で絞り込み
+
+---
+
+##  UI / UX の工夫
+
+- ステータスごとに色を変更し、進捗が一目で分かるように設計
+- Tailwind CSS によるレスポンシブ対応
+
+---
+
+##  開発環境の起動方法  
+```
+npm install
+npm run dev
+```
+ブラウザで以下にアクセスします：
+```
+http://localhost:5173/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📚学習目的・工夫点
+- React Hooks の基本的な使い方を理解する
+- TypeScript で「型を先に設計する」意識を身につける
+- state を直接操作せず、更新関数を通す設計
+- 見た目とロジックを分離したコンポーネント設計
